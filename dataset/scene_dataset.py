@@ -1,5 +1,6 @@
 import os 
 
+from random import randint
 from configs.base import CFG
 from common.scene_tools import *
 from torch.utils.data import Dataset
@@ -14,9 +15,19 @@ class SceneDataset(Dataset):
         self.cameras = cameraList_from_camInfos(self.scene_info.train_cameras,
                     CFG.resolution_scale, not train)
         self.cameras_extent = self.scene_info.nerf_normalization["radius"]
+        self.viewpoint_stack = self.cameras.copy()
+        self.viewpoint_indices = list(range(len(self.viewpoint_stack)))
 
     def __len__(self):
         return len(self.cameras)
 
     def __getitem__(self, idx):
-        return self.cameras[idx]
+        # idx not used
+        if not self.viewpoint_stack:
+            self.viewpoint_stack = self.cameras.copy()
+            self.viewpoint_indices = list(range(len(self.viewpoint_stack)))
+        rand_idx = randint(0, len(self.viewpoint_indices) - 1)
+        viewpoint_cam = self.viewpoint_stack.pop(rand_idx)
+        vind = self.viewpoint_indices.pop(rand_idx)
+
+        return viewpoint_cam

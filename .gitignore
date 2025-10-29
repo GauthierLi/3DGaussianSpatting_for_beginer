@@ -125,9 +125,8 @@ work_dirs/
 # custom
 custom/
 *.avi
-*.gif 
-*.png 
-*.jpg
 *.bin 
 *.txt
 *.onnx
+
+output/

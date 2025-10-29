@@ -1,7 +1,8 @@
 from common.attribute_dict import AttrDict
 
 CFG = dict(
-    data_dir=r"/home/gauthierli/data/test_colmap",
+    data_dir=r"./data/test_colmap",
+    save_dir=r"./output",
     data_device="cuda:0",
     resolution=-1,
     sh_degrees=3,
