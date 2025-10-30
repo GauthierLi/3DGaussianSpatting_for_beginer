@@ -126,7 +126,6 @@ work_dirs/
 custom/
 *.avi
 *.bin 
-*.txt
 *.onnx
 
 output/

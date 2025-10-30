@@ -16,6 +16,14 @@ cd 3DGaussianSpatting_for_beginer
 git submodule update --init --recursive
 ```
 
+install submodules with 
+```bash 
+ python -m pip install -e submodules/diff-gaussian-rasterization --no-build-isolation --config-settings editable_mode=compat
+ python -m pip install -e submodules/fused-ssim --no-build-isolation --config-settings editable_mode=compat 
+ python -m pip install -e submodules/simple-knn --no-build-isolation --config-settings editable_mode=compat
+ python -m pip install -r requirements.txt
+```
+
 ## Interactive visualization dataset
 run with following code
 ```python
@@ -27,7 +35,7 @@ python vis_dataset.py
 
 run following commands to run code and install related packages
 ```bash 
-python train.py --install --mode train
+python train.py --mode train
 ```
 reconstruct images:
 ![reconstruct](assets/frame_screenshot_30.10.2025.png)
